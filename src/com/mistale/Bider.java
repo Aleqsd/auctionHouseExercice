@@ -1,21 +1,13 @@
 package com.mistale;
 
-import java.util.Arrays;
-
 public class Bider {
     public char id;
     public int[] bids;
-    public int highest_bid;
+    public int highestBid;
 
     public Bider(char id, int[] bids) {
         this.id = id;
         this.bids = bids;
-    }
-
-    public void setHighestBid()
-    {
-        if (bids.length != 0)
-            this.setHighest_bid(Arrays.stream(bids).max().getAsInt());
     }
 
     public char getId() {
@@ -34,11 +26,11 @@ public class Bider {
         this.bids = bids;
     }
 
-    public int getHighest_bid() {
-        return highest_bid;
+    public int getHighestBid() {
+        return highestBid;
     }
 
-    public void setHighest_bid(int highest_bid) {
-        this.highest_bid = highest_bid;
+    public void setHighestBid(int highestBid) {
+        this.highestBid = highestBid;
     }
 }

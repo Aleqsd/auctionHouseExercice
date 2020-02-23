@@ -1,6 +1,8 @@
 package com.mistale;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -16,18 +18,19 @@ public class Main {
         biders.remove(highestBider);
         Bider secondHighestBider = getHighestBider(biders);
 
-        if (secondHighestBider.getHighest_bid() < 100)
+        if (secondHighestBider.getHighestBid() < 100)
             System.out.println("Bid didn't reach the reserve price of 100");
         else {
-            System.out.println("The Buyer " + secondHighestBider.getId() + " won the auction with a bid of " + secondHighestBider.getHighest_bid());
+            System.out.println("The Buyer " + secondHighestBider.getId() + " won the auction with a bid of " + secondHighestBider.getHighestBid());
         }
     }
 
     public static Bider getHighestBider(List<Bider> biders) {
         Bider highestBider = biders.get(0);
         for (Bider bider : biders) {
-            bider.setHighestBid();
-            if (bider.getHighest_bid() > highestBider.getHighest_bid())
+            if (bider.getBids().length > 0)
+                bider.setHighestBid(Arrays.stream(bider.getBids()).max().getAsInt());
+            if (bider.getHighestBid() > highestBider.getHighestBid())
                 highestBider = bider;
         }
         return highestBider;
